@@ -29,6 +29,16 @@ describe "Vidibus::Sysinfo::Traffic" do
     ------------------------+-------------+-------------+---------------
     estimated        --     |      --     |      --     |"
   end
+  let(:output_u20) do
+    " eth0  /  monthly
+
+       month        rx      |     tx      |    total    |   avg. rate
+    ------------------------+-------------+-------------+---------------
+      2021-07       588 MiB |     620 MiB |    1.18 GiB |    0.02 Mbit/s
+    ------------------------+-------------+-------------+---------------
+    estimated        --     |      --     |      --     |"
+  end
+
   let(:values_gb) do
     {
       input: 31.62,
@@ -47,7 +57,12 @@ describe "Vidibus::Sysinfo::Traffic" do
       output: 0.61
     }
   end
-
+  let(:values_u20) do
+    {
+      input: 0.57,
+      output: 0.61
+    }
+  end
   describe ".command" do
     it "should return 'vnstat -m'" do
       this.command.should eql("vnstat -m")
@@ -72,6 +87,11 @@ describe "Vidibus::Sysinfo::Traffic" do
     it 'should initialize result from mibibytes' do
       mock(Vidibus::Sysinfo::Traffic::Result).new(values_mib) { true }
       this.parse(output_mib)
+    end
+
+    it 'should initialize result from vnstat version 2.6' do
+      mock(Vidibus::Sysinfo::Traffic::Result).new(values_v26) { true }
+      this.parse(output_v26)
     end
 
     it "should return 0.0 if not enough data is available yet" do

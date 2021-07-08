@@ -38,10 +38,11 @@ module Vidibus
         end
 
         def parse(output)
-          month = /(\s*\w{3} \'\d{2})/
+          month = /\s*\w{3} \'\d{2}/
+          month_v26 = /\d{4}-\d{2}/
           traffic = /\s*(\d+(?:\.\d+)?) (ki?B|Mi?B|Gi?B|Ti?B)\s*/i
           last_month = output.split(/\r?\n/)[-3]
-          if last_month && last_month.match(/#{month}#{traffic}\|#{traffic}\|#{traffic}+/m)
+          if last_month && last_month.match(/(#{month}|#{month_v26})#{traffic}\|#{traffic}\|#{traffic}+/m)
             input_amount = $2.to_f
             input_unit = $3
             output_amount = $4.to_f
