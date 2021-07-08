@@ -29,7 +29,7 @@ describe "Vidibus::Sysinfo::Traffic" do
     ------------------------+-------------+-------------+---------------
     estimated        --     |      --     |      --     |"
   end
-  let(:output_u20) do
+  let(:output_v26) do
     " eth0  /  monthly
 
        month        rx      |     tx      |    total    |   avg. rate
