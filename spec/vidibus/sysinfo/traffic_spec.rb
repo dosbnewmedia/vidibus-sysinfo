@@ -57,7 +57,7 @@ describe "Vidibus::Sysinfo::Traffic" do
       output: 0.61
     }
   end
-  let(:values_u20) do
+  let(:values_v20) do
     {
       input: 0.57,
       output: 0.61
