@@ -29,7 +29,7 @@ describe "Vidibus::Sysinfo::Traffic" do
     ------------------------+-------------+-------------+---------------
     estimated        --     |      --     |      --     |"
   end
-  let(:output_u20) do
+  let(:output_v26) do
     " eth0  /  monthly
 
        month        rx      |     tx      |    total    |   avg. rate
@@ -57,7 +57,7 @@ describe "Vidibus::Sysinfo::Traffic" do
       output: 0.61
     }
   end
-  let(:values_u20) do
+  let(:values_v26) do
     {
       input: 0.57,
       output: 0.61
